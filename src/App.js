@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense }  from 'react';
+import { createBrowserHistory } from 'history';
+import { Router, Route, Switch } from 'react-router-dom';
+import { ProtectedRoute } from './routes/ProtectedRoute';
+import { PublicRoute } from './routes/PublicRoute';
+import ErrorBoundary from './utils/ErrorBoundary/ErrorBoundary';
+import Spinner from './components/Loader/Loader';
 
+const SignIn = lazy(() => import('./layouts/Authentication'));
+const Home = lazy(() => import('./layouts/Home'));
+const NotFound = lazy(() => import('./views/PageNotFound/PageNotFound'));
+
+// Async Component for code splitting
+const asyncComponent = Component => {
+  return props => (
+    <Suspense fallback={<Spinner active />}>
+      <Component {...props} />
+    </Suspense>
+  );
+}
+const hist = createBrowserHistory();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+        <Router history={hist}>
+          <Switch>
+            <PublicRoute exact path="/" component={asyncComponent(SignIn)} />
+            <ProtectedRoute
+              exact
+              path="/dashboard"
+              component={asyncComponent(Home)}
+            />
+             <Route path="*" component={asyncComponent(NotFound)} />
+          </Switch>
+        </Router>
+      </ErrorBoundary>
   );
 }
 
