@@ -2,8 +2,8 @@ import cookie from 'react-cookies';
 
 class Authentication {
   constructor() {
-    const isUserToken = cookie.load('userToken');
-    this.authenticated = !!isUserToken;
+    const isUserLoggedIn = cookie.load('isUserLoggedIn');
+    this.authenticated = !!isUserLoggedIn;
   }
 
   login(cb) {

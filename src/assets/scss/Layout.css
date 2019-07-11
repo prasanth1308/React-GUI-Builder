@@ -42,6 +42,7 @@
       	   font-style: italic;
       }
       html, body {
+        height: fit-content;
         font-family: 'NexusSansCompPro' !important;
       }
       

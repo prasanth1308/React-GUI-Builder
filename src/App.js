@@ -5,9 +5,10 @@ import { ProtectedRoute } from './routes/ProtectedRoute';
 import { PublicRoute } from './routes/PublicRoute';
 import ErrorBoundary from './utils/ErrorBoundary/ErrorBoundary';
 import Spinner from './components/Loader/Loader';
-import logo from './logo.svg';
 
+const SignIn = lazy(() => import('./layouts/Authentication'));
 const Home = lazy(() => import('./layouts/Home'));
+const NotFound = lazy(() => import('./views/PageNotFound/PageNotFound'));
 
 // Async Component for code splitting
 const asyncComponent = Component => {
@@ -23,12 +24,13 @@ function App() {
     <ErrorBoundary>
         <Router history={hist}>
           <Switch>
-            <PublicRoute exact path="/" component={asyncComponent(Home)} />
+            <PublicRoute exact path="/" component={asyncComponent(SignIn)} />
             <ProtectedRoute
               exact
               path="/dashboard"
               component={asyncComponent(Home)}
             />
+             <Route path="*" component={asyncComponent(NotFound)} />
           </Switch>
         </Router>
       </ErrorBoundary>
