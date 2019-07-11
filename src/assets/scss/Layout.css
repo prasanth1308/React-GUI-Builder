@@ -1,0 +1,47 @@
+  @font-face {
+        font-family: 'NexusSansCompPro';
+        src: url('../fonts/NexusSansCompPro.eot'); /* IE9 Compat Modes */
+        src: url('../fonts/NexusSansCompPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('../fonts/NexusSansCompPro.woff2') format('woff2'), /* Super Modern Browsers */
+             url('../fonts/NexusSansCompPro.woff') format('woff'), /* Pretty Modern Browsers */
+             url('../fonts/NexusSansCompPro.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('../fonts/NexusSansCompPro.svg#svgFontName') format('svg'); /* Legacy iOS */
+      }
+    
+      @font-face {
+        font-family: 'NexusSansCompPro';
+        src: url('../fonts/NexusSansCompPro-Bold.eot'); /* IE9 Compat Modes */
+        src: url('../fonts/NexusSansCompPro-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('../fonts/NexusSansCompPro-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+             url('../fonts/NexusSansCompPro-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+             url('../fonts/NexusSansCompPro-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('../fonts/NexusSansCompPro-Bold.svg#svgFontName') format('svg'); /* Legacy iOS */
+      	   font-weight: bold;
+      }
+    
+      @font-face {
+        font-family: 'NexusSansCompPro';
+        src: url('../fonts/NexusSansCompPro-Italic.eot'); /* IE9 Compat Modes */
+        src: url('../fonts/NexusSansCompPro-Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('../fonts/NexusSansCompPro-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+             url('../fonts/NexusSansCompPro-Italic.woff') format('woff'), /* Pretty Modern Browsers */
+             url('../fonts/NexusSansCompPro-Italic.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('../fonts/NexusSansCompPro-Italic.svg#svgFontName') format('svg'); /* Legacy iOS */
+      	   font-style: italic;
+      }
+    
+      @font-face {
+        font-family: 'NexusSansCompPro';
+        src: url('../fonts/NexusSansCompPro-BoldItalic.eot'); /* IE9 Compat Modes */
+        src: url('../fonts/NexusSansCompPro-BoldItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+             url('../fonts/NexusSansCompPro-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+             url('../fonts/NexusSansCompPro-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
+             url('../fonts/NexusSansCompPro-BoldItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+             url('../fonts/NexusSansCompPro-BoldItalic.svg#svgFontName') format('svg'); /* Legacy iOS */
+      	   font-weight: bold;
+      	   font-style: italic;
+      }
+      html, body {
+        font-family: 'NexusSansCompPro' !important;
+      }
+      
