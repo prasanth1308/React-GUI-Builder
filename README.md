@@ -4,6 +4,8 @@ React-GUI-Builder
 
 An application used to build form  based on user interaction(drag and drop), built with React, Redux, JavaScript, and SASS.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6f4ba8b4-fdee-4ef8-9183-af80a710fe4c/deploy-status)](https://app.netlify.com/sites/react-gui-builder/deploys)
+
 ## Installation and Setup Instructions
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
@@ -23,3 +25,5 @@ To Start Server:
 To Visit App:
 
 `localhost:3000` 
+
+You can find deployed site [here](https://react-gui-builder.netlify.com)
