@@ -17,11 +17,11 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MainListItems from '../../components/ListItems/ListItems';
+import DragrableContainer from './DragrableContainer';
 
 const drawerWidth = 240;
 
@@ -94,12 +94,13 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(0.5),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
   },
   fixedHeight: {
+    padding: 0,
     height: `calc(100vh - 230px)`
   },
 }));
@@ -172,19 +173,9 @@ function Dashboard() {
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
                 {/* <Chart /> */}
+                <DragrableContainer />
               </Paper>
             </Grid>
-            {/* <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid> */}
-            {/* Recent Orders
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders /> 
-              </Paper>
-            </Grid> */}
           </Grid>
         </Container>
       </main>

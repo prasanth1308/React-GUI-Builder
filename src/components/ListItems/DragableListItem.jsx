@@ -17,8 +17,11 @@ const style = {
   cursor: 'move'
 }
 const DragableListItem = ({ name }) => {
+  let min=1; 
+  let max=100;  
+  let randomNumber =Math.floor(Math.random() * (+max - +min)) + +min;
   const [{ isDragging }, drag] = useDrag({
-    item: { name, type: 'box' },
+    item: { id: name+randomNumber, left: 0, top: 0, name, type: 'box' },
     end: dropResult => {
       if (dropResult) {
         console.log('dropResult',dropResult);
@@ -28,6 +31,9 @@ const DragableListItem = ({ name }) => {
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
+    isDragging: test =>{
+      console.log('test', test);
+    },
   })
   const opacity = isDragging ? 0.4 : 1
   return (
