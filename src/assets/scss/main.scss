@@ -7,3 +7,11 @@
 @import "./Layout.css";
 
 
+.action-section div{
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    .action-button{
+        margin: 0.15rem
+    }
+}

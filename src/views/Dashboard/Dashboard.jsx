@@ -1,7 +1,10 @@
 
 import React from 'react';
 import clsx from 'clsx';
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,7 +21,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-
+import MainListItems from '../../components/ListItems/ListItems';
 
 const drawerWidth = 240;
 
@@ -97,7 +100,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: `calc(100vh - 230px)`
   },
 }));
 
@@ -113,6 +116,7 @@ function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
+    <DndProvider backend={HTML5Backend}>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -148,33 +152,44 @@ function Dashboard() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
+        <Divider />
+        <List>{MainListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid className='action-section' item xs={12} md={12} lg={12}>
+              <Paper className={classes.paper}>
+                <Button variant="contained" size="small" color="primary" className='action-button'>
+                  Save
+                </Button>
+                <Button variant="contained" size="small" color="secondary" className='action-button'>
+                  Reset
+                </Button>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
                 {/* <Chart /> */}
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            {/* <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                {/* <Deposits /> */}
+                <Deposits />
               </Paper>
-            </Grid>
-            {/* Recent Orders */}
+            </Grid> */}
+            {/* Recent Orders
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {/* <Orders /> */}
+                <Orders /> 
               </Paper>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </main>
     </div>
+    </DndProvider>
   );
 }
 
