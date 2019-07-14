@@ -1,6 +1,7 @@
 import React, { lazy, Suspense }  from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
+import GlobalState from './hooks/useContext/GlobalState';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import { PublicRoute } from './routes/PublicRoute';
 import ErrorBoundary from './utils/ErrorBoundary/ErrorBoundary';

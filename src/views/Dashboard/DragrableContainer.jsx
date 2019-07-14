@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useDrop } from 'react-dnd';
+import context from '../../hooks/useContext/Context';
 import Box from './Box';
 import update from 'immutability-helper';
 const styles = {
@@ -9,35 +10,23 @@ const styles = {
     position: 'relative',
 }
 const DragrableContainer = ({ hideSourceOnDrag }) => {
-    const [boxes, setBoxes] = useState({
-        
-    })
+    const globalContext = useContext(context);
+    debugger
+    const globalContextBoxes = globalContext.payload || {};
+    const [boxes, setBoxes] = useState(globalContextBoxes);
     const [, drop] = useDrop({
         accept: 'box',
         drop(item, monitor) {
             const delta = monitor.getDifferenceFromInitialOffset();
-            
-            //
-            const delta1 = monitor.getInitialClientOffset()
-            const delta2 = monitor.getInitialSourceClientOffset()
-            const delta3 = monitor.getClientOffset()
-            const delta4 = monitor.getSourceClientOffset()
-            //
-
             const left = Math.round(item.left + delta.x);
             const top = Math.round(item.top + delta.y);
-            const left1 = Math.round(item.left + delta.x);
-            const top1 = Math.round(item.top + delta.y);
-            if(boxes[item.id]){
-                moveBox(item.id, left, top, item.name);
-            } else {
-                moveBox(item.id, left1, top1, item.name);
-            }
-           
+            moveBox(item.id, left, top, item.name);           
             return undefined
         },
     })
     const moveBox = (id, left, top, name) => {
+        let newBox = { id, left, top, name }; 
+        globalContext.updateSelectedInputFieldList(newBox);
         if (boxes[id]) {
             setBoxes(
                 update(boxes, {
@@ -47,7 +36,6 @@ const DragrableContainer = ({ hideSourceOnDrag }) => {
                 }),
             )
         } else {
-            let newBox = { id, left, top, name };
             setBoxes(
                 update(boxes, {
                     [id]: { $set: newBox }
