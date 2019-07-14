@@ -23,6 +23,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Snackbar from '@material-ui/core/Snackbar';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import authentication from '../../utils/Authentication';
 import MainListItems from '../../components/ListItems/ListItems';
 import DragrableContainer from './DragrableContainer';
 import context from '../../hooks/useContext/Context';
@@ -110,7 +111,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Dashboard() {
+function Dashboard(props) {
+  const { history } = props;
   const globalContext = useContext(context);
   const classes = useStyles();
   const [open, setOpen] = useState(true);
@@ -150,6 +152,12 @@ function Dashboard() {
   const onResetClick = () => {
     setIsResetAlert(true);
   };
+  const onLogoutClick = () => {
+    authentication.login(() => {
+      clearStorageItem('isUserLoggedIn');
+      history.go('/');
+    });
+  };
   const handleClose = () => {
     setIsSnackbar(false);
   };
@@ -173,7 +181,7 @@ function Dashboard() {
           }}
           className={'snackbar-'+snackbarType}
           open={isSnackbar}
-          autoHideDuration={600000}
+          autoHideDuration={6000}
           onClose={handleClose}
           variant={snackbarType}
           message={<span>{snackbarMessage}</span>}
@@ -218,11 +226,7 @@ function Dashboard() {
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
               Dashboard
           </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+          <Button className='logout-btn' onClick={onLogoutClick}>Logout</Button>
           </Toolbar>
         </AppBar>
         <Drawer
