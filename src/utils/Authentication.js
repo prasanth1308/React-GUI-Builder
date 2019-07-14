@@ -1,8 +1,8 @@
-import cookie from 'react-cookies';
+import { getStorage } from '../utils/storage/storage';
 
 class Authentication {
   constructor() {
-    const isUserLoggedIn = cookie.load('isUserLoggedIn');
+    const isUserLoggedIn = getStorage('isUserLoggedIn');
     this.authenticated = !!isUserLoggedIn;
   }
 

@@ -10,8 +10,7 @@ const styles = {
 }
 const DragrableContainer = ({ hideSourceOnDrag }) => {
     const [boxes, setBoxes] = useState({
-        a: { top: 20, left: 80, name: 'Drag me around' },
-        b: { top: 180, left: 20, name: 'Drag me too' },
+        
     })
     const [, drop] = useDrop({
         accept: 'box',

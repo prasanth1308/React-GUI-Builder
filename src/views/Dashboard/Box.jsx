@@ -18,7 +18,7 @@ const Box = ({ id, left, top, hideSourceOnDrag, children }) => {
     return <div ref={drag} />
   }
   return (
-    <div ref={drag} style={{ ...style, left, top }}>
+    <div id={id} ref={drag} style={{ ...style, left, top }}>
       {children}
     </div>
   )

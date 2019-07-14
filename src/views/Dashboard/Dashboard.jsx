@@ -172,7 +172,6 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                {/* <Chart /> */}
                 <DragrableContainer />
               </Paper>
             </Grid>
