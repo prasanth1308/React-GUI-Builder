@@ -10,34 +10,10 @@ import DragableListItem from './DragableListItem';
 
 const MainListItems = (
   <div>
-    {/* <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="TextLabel" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="TextInpt" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Button" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Toggle" />
-    </ListItem> */}
     <DragableListItem name="TextLabel"/>
     <DragableListItem name="TextInpt"/>
     <DragableListItem name="Button"/>
-    <DragableListItem name="Toggle"/>
+    <DragableListItem name="Checkbox"/>
   </div>
 );
 
