@@ -25,15 +25,11 @@ const DragableListItem = ({ name }) => {
     end: dropResult => {
       if (dropResult) {
         console.log('dropResult',dropResult);
-        // alert(`You dropped ${name} into ${dropResult.name}!`)
       }
     },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
-    isDragging: test =>{
-      console.log('test', test);
-    },
   })
   const opacity = isDragging ? 0.4 : 1
   return (
@@ -44,7 +40,6 @@ const DragableListItem = ({ name }) => {
         </ListItemIcon>
         <ListItemText primary={name} />
       </ListItem>
-      {/* {name} */}
     </div>
   )
 }

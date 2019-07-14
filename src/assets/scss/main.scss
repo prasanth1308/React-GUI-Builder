@@ -15,3 +15,29 @@
         margin: 0.15rem
     }
 }
+.sweet-alert-btn {
+    width: 4rem;
+    height: 1.5rem;
+    color: white;
+    font-family: inherit;
+    border: none;
+    border-radius: 0.2rem;
+    &.btn-danger{
+        background-color: #f50057;
+    }
+    &.btn-default{       
+        background-color: #3f51b5;
+    }
+}
+.snackbar-success div{
+    background-color: #43a047;
+}
+.snackbar-error div{
+    background-color: #d32f2f;
+}
+.snackbar-warning div{
+    background-color: #ffa000;
+}
+.MuiButton-root.logout-btn{
+    color: #ffffff;
+}

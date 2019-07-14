@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDrag } from 'react-dnd'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 const style = {
   position: 'absolute',
-  border: '1px dashed gray',
-  backgroundColor: 'white',
-  padding: '0.5rem 1rem',
   cursor: 'move',
 }
-const Box = ({ id, left, top, hideSourceOnDrag, children }) => {
+
+const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
+  const [shouldCrash, setShouldCrash] = useState(false);
   const [{ isDragging }, drag] = useDrag({
-    item: { id, left, top, type: 'box' },
+    item: { id, left, top, name, type: 'box' },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
@@ -17,10 +21,59 @@ const Box = ({ id, left, top, hideSourceOnDrag, children }) => {
   if (isDragging && hideSourceOnDrag) {
     return <div ref={drag} />
   }
+
+  const getInputElement = (id, left, top, name) => {
+    try {
+      switch (name) {
+        case 'TextLabel':
+          return <div id={id} ref={drag} style={{ ...style, left, top }}>
+            {children}
+          </div>
+        case 'TextInpt':
+          return <TextField
+            id={id}
+            ref={drag}
+            style={{ ...style, left, top }}
+            label={name}
+            defaultValue="foo"
+            margin="normal"
+          />
+        case 'Button':
+          return <Button
+            id={id}
+            ref={drag}
+            variant="contained"
+            color="primary"
+            style={{ ...style, left, top }}
+          >
+            {name}
+          </Button>
+        case 'Checkbox':
+          return <FormControlLabel
+            control={<Checkbox value="checkedC" />}
+            label={name}
+            style={{ ...style, left, top }}
+            ref={drag}
+            id={id}
+          />
+
+        default:
+          return <div id={id} ref={drag} style={{ ...style, left, top }}>
+            {children}
+          </div>
+      }
+    } catch (error) {
+      setShouldCrash(() => {
+        throw new Error('getInputElement');
+      });
+    }
+  };
+
   return (
-    <div id={id} ref={drag} style={{ ...style, left, top }}>
-      {children}
-    </div>
+    // <div id={id} ref={drag} style={{ ...style, left, top }}>
+    //   {children}
+    // </div>
+    getInputElement(id, left, top, name)
   )
 }
 export default Box
