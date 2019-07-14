@@ -1,4 +1,4 @@
-import React, { lazy, Suspense }  from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import GlobalState from './hooks/useContext/GlobalState';
@@ -22,7 +22,8 @@ const asyncComponent = Component => {
 const hist = createBrowserHistory();
 function App() {
   return (
-    <ErrorBoundary>
+    <GlobalState>
+      <ErrorBoundary>
         <Router history={hist}>
           <Switch>
             <PublicRoute exact path="/" component={asyncComponent(SignIn)} />
@@ -31,10 +32,11 @@ function App() {
               path="/dashboard"
               component={asyncComponent(Home)}
             />
-             <Route path="*" component={asyncComponent(NotFound)} />
+            <Route path="*" component={asyncComponent(NotFound)} />
           </Switch>
         </Router>
       </ErrorBoundary>
+    </GlobalState>
   );
 }
 

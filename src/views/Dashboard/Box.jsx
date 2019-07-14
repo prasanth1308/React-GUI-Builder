@@ -7,9 +7,9 @@ const style = {
   padding: '0.5rem 1rem',
   cursor: 'move',
 }
-const Box = ({ id, left, top, hideSourceOnDrag, children }) => {
+const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
   const [{ isDragging }, drag] = useDrag({
-    item: { id, left, top, type: 'box' },
+    item: { id, left, top, name, type: 'box' },
     collect: monitor => ({
       isDragging: monitor.isDragging(),
     }),
