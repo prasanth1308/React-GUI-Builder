@@ -29,7 +29,7 @@ const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
           return <div id={id} ref={drag} style={{ ...style, left, top }}>
             {children}
           </div>
-        case 'TextInpt':
+        case 'TextInput':
           return <TextField
             id={id}
             ref={drag}
@@ -70,9 +70,6 @@ const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
   };
 
   return (
-    // <div id={id} ref={drag} style={{ ...style, left, top }}>
-    //   {children}
-    // </div>
     getInputElement(id, left, top, name)
   )
 }
