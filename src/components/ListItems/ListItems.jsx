@@ -1,25 +1,37 @@
+/*
+* ListItems.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will used render List of Items Draggable on side bar of dashboard
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+None
+*/
+
 import React from 'react';
 import TextLabelIcon from '@material-ui/icons/Label';
 import TextInputIcon from '@material-ui/icons/Input';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import DragableListItem from './DragableListItem';
+import DraggableListItem from './DraggableListItem';
 
-const MainListItems = (
+const ListItems = (
   <div>
-    <DragableListItem name="TextLabel">
+    <DraggableListItem name="TextLabel">
       <TextLabelIcon />
-    </DragableListItem>
-    <DragableListItem name="TextInput"> 
+    </DraggableListItem>
+    <DraggableListItem name="TextInput"> 
       <TextInputIcon />
-    </DragableListItem>
-    <DragableListItem name="Button"> 
+    </DraggableListItem>
+    <DraggableListItem name="Button"> 
       <DashboardIcon />
-    </DragableListItem>
-    <DragableListItem name="Checkbox"> 
+    </DraggableListItem>
+    <DraggableListItem name="Checkbox"> 
       <CheckBoxIcon />
-    </DragableListItem>
+    </DraggableListItem>
   </div>
 );
 
-export default MainListItems;
+export default ListItems;

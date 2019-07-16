@@ -1,3 +1,18 @@
+/*
+* storage.js
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will used handle the local storage
+* Template: JS
+* Prerequisites: React and babel
+
+METHODS
+--------
+setStorage(key, value)
+getStorage(key)
+clearStorageItem(key)
+clearStorage()
+*/
+
 
 /**
  * @summary Function to store  localstorage values

@@ -1,6 +1,19 @@
+/*
+* SignIn.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will be used for Signin operations
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+getInputElement(id, left, top, name)
+handleClose(event, reason)
+*/
+
 import React from 'react';
 import authentication from '../../utils/Authentication';
-import { setStorage, clearStorage } from '../../utils/storage/storage';
+import { setStorage } from '../../utils/storage/storage';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -45,6 +58,13 @@ export default function SignIn(props) {
   const classes = useStyles();
   const { history } = props;
   const [open, setOpen] = React.useState(false);
+  /**
+    * @method
+    * @name - onFormSubmit
+    * This method will trigger the login validation
+    * @param event
+    * @returns none
+  */
   const onFormSubmit = (event) => {
     event.preventDefault();
     try {
@@ -63,6 +83,13 @@ export default function SignIn(props) {
     }
   };
 
+  /**
+    * @method
+    * @name - handleClose
+    * This method will used to close operation of the snackbar
+    * @param event
+    * @returns none
+  */
   function handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;

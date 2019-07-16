@@ -1,3 +1,15 @@
+/*
+* DraggableListItem.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will used render Items which are Draggable
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+None
+*/
+
 import React from 'react'
 import { useDrag } from 'react-dnd'
 import ListItem from '@material-ui/core/ListItem';
@@ -13,7 +25,7 @@ const style = {
   cursor: 'move'
 }
 
-const DragableListItem = ({ name, children }) => {
+const DraggableListItem = ({ name, children }) => {
   let min=1; 
   let max=100;  
   let randomNumber =Math.floor(Math.random() * (+max - +min)) + +min;
@@ -21,7 +33,7 @@ const DragableListItem = ({ name, children }) => {
     item: { id: name+randomNumber, left: 0, top: 0, name, type: 'box' },
     end: dropResult => {
       if (dropResult) {
-        // console.log('dropResult',dropResult);
+        // Do animation after the drop
       }
     },
     collect: monitor => ({
@@ -41,4 +53,4 @@ const DragableListItem = ({ name, children }) => {
   )
 }
 
-export default DragableListItem
+export default DraggableListItem

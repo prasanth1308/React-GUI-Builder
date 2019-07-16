@@ -1,4 +1,14 @@
+/*
+* ErrorBoundary.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will used catch exception on the application send it to logger function(WIP)
+* Template: JSx
+* Prerequisites: React and babel
 
+METHODS
+--------
+componentDidCatch(error, info)
+*/
 import React from 'react';
 
 class ErrorBoundary extends React.Component {
@@ -7,6 +17,14 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
+  /**
+     * @method
+     * @name - componentDidCatch
+     * This method will catch all the exceptions in this class
+     * @param error
+     * @param info
+     * @returns none
+  */
   componentDidCatch(error, info) {
     // Display fallback UI
     this.setState({ hasError: true });
