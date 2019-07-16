@@ -1,3 +1,15 @@
+/*
+* DraggableContainer.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will be used for creating drag target container
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+moveBox(id, left, top, name)
+*/
+
 import React, { useState, useContext } from 'react';
 import { useDrop } from 'react-dnd';
 import context from '../../hooks/useContext/Context';
@@ -7,7 +19,7 @@ const styles = {
     height: 'inherit',
     position: 'relative',
 }
-const DragrableContainer = ({ hideSourceOnDrag }) => {
+const DraggableContainer = ({ hideSourceOnDrag }) => {
     const globalContext = useContext(context);
     const globalContextBoxes = globalContext.state ? globalContext.state.payload : {};
     const [, drop] = useDrop({
@@ -19,7 +31,17 @@ const DragrableContainer = ({ hideSourceOnDrag }) => {
             moveBox(item.id, left, top, item.name);           
             return undefined
         },
-    })
+    });
+    /**
+        * @method
+        * @name - moveBox
+        * This method will update the global context of UI element position bases on the user drag operation
+        * @param id
+        * @param left
+        * @param top
+        * @param name
+        * @returns none
+    */
     const moveBox = (id, left, top, name) => {
         let newBox = { id, left, top, name }; 
         globalContext.updateSelectedInputFieldList(newBox);
@@ -44,4 +66,4 @@ return (
     </div>
 )
 }
-export default DragrableContainer
+export default DraggableContainer;

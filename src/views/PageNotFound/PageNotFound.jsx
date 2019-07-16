@@ -1,3 +1,15 @@
+/*
+* NotFound.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will be used render the 404 Error page, whenever user enter the invalid route path
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+None
+*/
+
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';

@@ -2,7 +2,7 @@
 import React, { useReducer } from 'react';
 import context from './Context';
 import { reducer, UPDATE_SELECTED_FIELD_LIST, CLEAR_SELECTED_FIELD_LIST } from './reducer';
-import { setStorage, getStorage, clearStorageItem } from '../../utils/storage/storage';
+import { getStorage } from '../../utils/storage/storage';
 
 const initialState = {
   payload: JSON.parse(getStorage('payload')) || {}

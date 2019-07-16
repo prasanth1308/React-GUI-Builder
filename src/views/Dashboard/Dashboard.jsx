@@ -1,3 +1,23 @@
+/*
+* Dashboard.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will be used for creating dashboard page
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+handleDrawerOpen()
+handleDrawerClose()
+onSaveClick()
+onConfirmClick()
+onCancelClick()
+onResetClick()
+onLogoutClick()
+handleClose()
+setResetButton()
+useEffect()
+*/
 
 import React, { useContext, useState, useEffect } from 'react';
 import clsx from 'clsx';
@@ -25,7 +45,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import authentication from '../../utils/Authentication';
 import MainListItems from '../../components/ListItems/ListItems';
-import DragrableContainer from './DragrableContainer';
+import DraggableContainer from './DraggableContainer';
 import context from '../../hooks/useContext/Context';
 import { setStorage, getStorage, clearStorageItem } from '../../utils/storage/storage';
 
@@ -120,19 +140,40 @@ function Dashboard(props) {
   const [isSnackbar, setIsSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarType, setSnackbarType] = useState('error');
+  /**
+    * @method
+    * @name - handleDrawerOpen
+    * This method will set drawer open
+    * @param none
+    * @returns none
+  */
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+  /**
+    * @method
+    * @name - handleDrawerClose
+    * This method will set drawer close
+    * @param none
+    * @returns none
+  */
   const handleDrawerClose = () => {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  /**
+    * @method
+    * @name - onSaveClick
+    * This method will trigger save action
+    * @param none
+    * @returns none
+  */
   const onSaveClick = () => {
     let payload = globalContext.state.payload || {};
-    if(Object.entries(payload).length === 0 && payload.constructor === Object){
+    if (Object.entries(payload).length === 0 && payload.constructor === Object) {
       setSnackbarMessage("Please add input fields to save");
       setSnackbarType('warning');
-    } else {      
+    } else {
       setSnackbarMessage("Saved Successfully");
       setSnackbarType('success');
       setStorage('payload', JSON.stringify(payload));
@@ -140,34 +181,83 @@ function Dashboard(props) {
     }
     setIsSnackbar(true);
   };
+  /**
+    * @method
+    * @name - onConfirmClick
+    * This method will trigger reset action to clear selected form inputs
+    * @param none
+    * @returns none
+  */
   const onConfirmClick = () => {
     globalContext.clearSelectedInputFieldList({});
     clearStorageItem('payload');
     setIsResetEnabled(true);
     setIsResetAlert(false);
   };
+  /**
+    * @method
+    * @name - onCancelClick
+    * This method will cancel user reset operation
+    * @param none
+    * @returns none
+  */
   const onCancelClick = () => {
     setIsResetAlert(false);
   };
+  /**
+    * @method
+    * @name - onResetClick
+    * This method will trigger user confirmation for reset operation
+    * @param none
+    * @returns none
+  */
   const onResetClick = () => {
     setIsResetAlert(true);
   };
+  /**
+    * @method
+    * @name - onLogoutClick
+    * This method will trigger logout operation and navigate to login page
+    * @param none
+    * @returns none
+  */
   const onLogoutClick = () => {
     authentication.login(() => {
       clearStorageItem('isUserLoggedIn');
       history.go('/');
     });
   };
+  /**
+   * @method
+   * @name - handleClose
+   * This method will set snackbar close
+   * @param none
+   * @returns none
+ */
   const handleClose = () => {
     setIsSnackbar(false);
   };
+  /**
+   * @method
+   * @name - setResetButton
+   * This method will decide about the reset button disable status
+   * @param none
+   * @returns none
+ */
   const setResetButton = () => {
     let payload = getStorage('payload');
     let isPayload = payload ? false : true;
     return isPayload;
   };
   const [isResetEnabled, setIsResetEnabled] = useState(true);
-  useEffect(() => {  
+  /**
+   * @method
+   * @name - useEffect
+   * This method will triggered whenever the component is mounted for the first time
+   * @param none
+   * @returns none
+ */
+  useEffect(() => {
     let isEnabled = setResetButton();
     setIsResetEnabled(isEnabled);
   }, []);
@@ -179,7 +269,7 @@ function Dashboard(props) {
             vertical: 'top',
             horizontal: 'center',
           }}
-          className={'snackbar-'+snackbarType}
+          className={'snackbar-' + snackbarType}
           open={isSnackbar}
           autoHideDuration={6000}
           onClose={handleClose}
@@ -226,7 +316,7 @@ function Dashboard(props) {
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
               Dashboard
           </Typography>
-          <Button className='logout-btn' onClick={onLogoutClick}>Logout</Button>
+            <Button className='logout-btn' onClick={onLogoutClick}>Logout</Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -260,7 +350,7 @@ function Dashboard(props) {
               </Grid>
               <Grid item xs={12} md={12} lg={12}>
                 <Paper className={fixedHeightPaper}>
-                  <DragrableContainer />
+                  <DraggableContainer />
                 </Paper>
               </Grid>
             </Grid>

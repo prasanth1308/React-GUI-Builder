@@ -1,3 +1,15 @@
+/*
+* Box.jsx
+* Written by Prasanth Ravi (prasanth1308@gmail.com)
+* This javascript file will be used for creating input element based on user drag operation
+* Template: JSX
+* Prerequisites: React and babel
+
+METHODS
+--------
+getInputElement(id, left, top, name)
+*/
+
 import React, { useState } from 'react'
 import { useDrag } from 'react-dnd'
 import Button from '@material-ui/core/Button';
@@ -21,7 +33,16 @@ const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
   if (isDragging && hideSourceOnDrag) {
     return <div ref={drag} />
   }
-
+  /**
+     * @method
+     * @name - getInputElement
+     * This method return the html element based on type passed
+     * @param id
+     * @param left
+     * @param top
+     * @param name
+     * @returns none
+  */
   const getInputElement = (id, left, top, name) => {
     try {
       switch (name) {
@@ -29,7 +50,7 @@ const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
           return <div id={id} ref={drag} style={{ ...style, left, top }}>
             {children}
           </div>
-        case 'TextInpt':
+        case 'TextInput':
           return <TextField
             id={id}
             ref={drag}
@@ -70,9 +91,6 @@ const Box = ({ id, left, top, name, hideSourceOnDrag, children }) => {
   };
 
   return (
-    // <div id={id} ref={drag} style={{ ...style, left, top }}>
-    //   {children}
-    // </div>
     getInputElement(id, left, top, name)
   )
 }
